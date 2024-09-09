@@ -3,6 +3,7 @@ title = "do nothing when laptop lid is closed"
 date = "2024-09-05"
 description = "how to set up debian 12 so that nothing happens when the laptop lid is closed"
 tags = [
+    "debian"
 ]
 +++
 

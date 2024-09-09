@@ -3,7 +3,8 @@ title = "disable ssh password login"
 date = "2024-09-01"
 description = "process kworker using high amount of cpu, over 80%"
 tags = [
-
+    "debian",
+    "ssh"
 ]
 +++
 

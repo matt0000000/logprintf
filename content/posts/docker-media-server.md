@@ -3,6 +3,8 @@ title = "docker media server setup"
 date = "2024-09-03"
 description = "docker-compose.yml for my docker media server setup"
 tags = [
+  "debian",
+  "docker"
 ]
 +++
 

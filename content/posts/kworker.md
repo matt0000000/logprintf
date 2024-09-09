@@ -3,6 +3,7 @@ title = "kworker high cpu usage fix"
 date = "2024-09-01"
 description = "process kworker using high amount of cpu, over 80%"
 tags = [
+    "debian"
 ]
 +++
 
