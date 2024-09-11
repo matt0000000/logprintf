@@ -13,6 +13,30 @@
     
     
     <item>
+      <title>persistent permissions on /dev/dri</title>
+      <link>https://logprintf.com/persistent-permissions-on-/dev/dri/</link>
+      <pubDate>Tue, 10 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://logprintf.com/persistent-permissions-on-/dev/dri/</guid>
+      <description>&lt;p&gt;So in my latest &lt;a href=&#34;https://logprintf.com/setup-plex/emby/jellyfin-hardware-transcoding-via-intel-igpu/&#34;&gt;post&lt;/a&gt; regarding setting up your media server app (Pex/Emby/Jellyfin) so that it uses your iGPU utilizing QuickSync I mentioned that you needed to change permissions on &lt;code&gt;/dev/dri&lt;/code&gt; so that your docker container can access it. In order to do that you do:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod -R 777 /dev/dri
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So, that works. But the problem with that is, when you restart your server the permissions are reset and you need to repeat the same command again.&lt;/p&gt;
+&lt;p&gt;What you can do to make the permission changes permanent is that, you can create a udev rule. That will ensure that the correct permissions are applied to the &lt;code&gt;/dev/dri&lt;/code&gt; device at boot time. So here&amp;rsquo;s how:&lt;/p&gt;
+&lt;p&gt;First we create a udev rule file:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vim /etc/udev/rules.d/99-dri.rules
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then we add the following content to the file:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SUBSYSTEM==&amp;#34;drm&amp;#34;, MODE=&amp;#34;0777&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This rule sets the permissions of any device under the &lt;code&gt;drm&lt;/code&gt; subsystem (like /dev/dri) to &lt;code&gt;0777&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;After saving the file, reload the udev rules:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo udevadm control --reload-rules
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Reboot your system and your docker containers can access /dev/dri persistently after each reboot:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    
+    
+    <item>
       <title>setup plex/emby/jellyfin hardware transcoding via intel igpu</title>
       <link>https://logprintf.com/setup-plex/emby/jellyfin-hardware-transcoding-via-intel-igpu/</link>
       <pubDate>Mon, 09 Sep 2024 00:00:00 +0000</pubDate>

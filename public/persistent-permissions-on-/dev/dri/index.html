@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="logging stuff">
+    
+    <link rel="shortcut icon" href="https://logprintf.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <link rel="canonical" href="https://logprintf.com/persistent-permissions-on-/dev/dri/" />
+    <title>persistent permissions on /dev/dri</title>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="b7740ce6-8b64-4398-bcd9-cbb9d3a1a89f"></script>
+</head>
+<body><header id="banner">
+    <h2><a href="https://logprintf.com/">log.Printf</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" title="posts">posts</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>persistent permissions on /dev/dri</h1>
+        <div>
+                <time>September 10, 2024</time>
+            </div>
+    </header><p>So in my latest <a href="https://logprintf.com/setup-plex/emby/jellyfin-hardware-transcoding-via-intel-igpu/">post</a> regarding setting up your media server app (Pex/Emby/Jellyfin) so that it uses your iGPU utilizing QuickSync I mentioned that you needed to change permissions on <code>/dev/dri</code> so that your docker container can access it. In order to do that you do:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo chmod -R 777 /dev/dri
+</span></span></code></pre></div><p>So, that works. But the problem with that is, when you restart your server the permissions are reset and you need to repeat the same command again.</p>
+<p>What you can do to make the permission changes permanent is that, you can create a udev rule. That will ensure that the correct permissions are applied to the <code>/dev/dri</code> device at boot time. So here&rsquo;s how:</p>
+<p>First we create a udev rule file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo vim /etc/udev/rules.d/99-dri.rules
+</span></span></code></pre></div><p>Then we add the following content to the file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">SUBSYSTEM==&#34;drm&#34;, MODE=&#34;0777&#34;
+</span></span></code></pre></div><p>This rule sets the permissions of any device under the <code>drm</code> subsystem (like /dev/dri) to <code>0777</code>.</p>
+<p>After saving the file, reload the udev rules:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo udevadm control --reload-rules
+</span></span></code></pre></div><p>Reboot your system and your docker containers can access /dev/dri persistently after each reboot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo reboot
+</span></span></code></pre></div></article>
+
+        </main><footer id="footer">
+    powered by Hugo
+</footer>
+</body>
+</html>
