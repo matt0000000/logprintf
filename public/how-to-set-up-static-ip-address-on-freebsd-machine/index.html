@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="logging stuff">
+    
+    <link rel="shortcut icon" href="https://logprintf.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <link rel="canonical" href="https://logprintf.com/how-to-set-up-static-ip-address-on-freebsd-machine/" />
+    <title>how to set up static IP address on freebsd machine</title>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="b7740ce6-8b64-4398-bcd9-cbb9d3a1a89f"></script>
+</head>
+<body><header id="banner">
+    <h2><a href="https://logprintf.com/">log.Printf</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" title="posts">posts</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>how to set up static IP address on freebsd machine</h1>
+        <div>
+                <time>September 14, 2024</time>
+            </div>
+    </header><p>Setting up a static IP address can help ensure that a device keeps the same IP address over time, which is especially useful for servers or other network services.</p>
+<p>Below are the steps to configure a static IP address on a FreeBSD machine using the <code>/etc/rc.conf</code> file.</p>
+<p>The network configuration in FreeBSD is controlled through the <code>/etc/rc.conf</code> file. Begin by opening this file with your preferred text editor. In this example, I will use <code>vim</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim /etc/rc.conf
+</span></span></code></pre></div><p>Locate the line in the file that configures the Ethernet interface (usually <code>em0</code> or something similar). It will look something like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">ifconfig_em0</span><span class="o">=</span><span class="s2">&#34;DHCP&#34;</span>
+</span></span></code></pre></div><p>This line tells FreeBSD to use DHCP for assigning an IP address. To assign a static IP, replace the line with the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">ifconfig_em0</span><span class="o">=</span><span class="s2">&#34;inet 192.168.1.61 netmask 255.255.255.0&#34;</span>
+</span></span></code></pre></div><p>In this example:</p>
+<ul>
+<li><code>192.168.1.61</code> is the static IP address you want to assign to your machine.</li>
+<li><code>255.255.255.0</code> is the subnet mask.</li>
+</ul>
+<p>Make sure to adjust the IP address and subnet mask according to your network configuration.</p>
+<p>Next, we need to specify the default gateway (the router&rsquo;s IP address) that your machine will use to access devices outside its local network. Add or update the following line in <code>/etc/rc.conf</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">defaultrouter</span><span class="o">=</span><span class="s2">&#34;192.168.1.1&#34;</span>
+</span></span></code></pre></div><p>Replace <code>192.168.1.1</code> with the actual IP address of your network’s default gateway. Save and exit.</p>
+<p>To apply the changes, you’ll need to restart the networking service on FreeBSD. This can be done by either rebooting the system or restarting the networking service with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">service netif restart
+</span></span></code></pre></div><p>You may also want to restart the routing service to ensure the default gateway is applied:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">service routing restart
+</span></span></code></pre></div><p>Once the system is back up and running, you can verify the static IP configuration using the <code>ifconfig</code> command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ifconfig em0
+</span></span></code></pre></div><p>Check that the <code>em0</code> interface is now using the static IP address (<code>192.168.1.1</code> in this example) and has the correct subnet mask.</p>
+</article>
+
+        </main><footer id="footer">
+    powered by Hugo
+</footer>
+</body>
+</html>

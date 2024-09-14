@@ -15,25 +15,25 @@ So what you do is disabling dynamic USB power management in kernel.
 
 In order to do that you have to add `usbcore.autosuspend=-1` to your kernel's boot command line:
 
-```html
+```bash
 GRUB_CMDLINE_LINUX_DEFAULT="<existing stuff> usbcore.autosuspend=-1"</existing>
 ```
 
 To do that permanently, open the grub configuration file
 
-```html
+```bash
 sudo nano /etc/default/grub
 ```
 
 and add the flag below:
 
-```html
+```bash
 usbcore.autosuspend=-1
 ```
 
 Next you have to update your grub via
 
-```html
+```bash
 sudo update-grub
 ```
 

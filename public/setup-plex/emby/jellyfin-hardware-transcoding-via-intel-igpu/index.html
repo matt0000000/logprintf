@@ -33,9 +33,9 @@
             </div>
     </header><p>So I&rsquo;ve been having issues with enabling hardware transcode in my Emby Container on my Debian machine with i5-8500. These are the steps I had to take to enable hardware transcoding utilizing QuickSync.</p>
 <p>First I had to add non-free to the debian sources in order to install Intel non-free drivers.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo nano /etc/apt/sources.list
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/apt/sources.list
 </span></span></code></pre></div><p>I added <code>contrib</code> and <code>non-free</code> to the end of the relevant lines so my sources.list file looks like below:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">#deb cdrom:[Debian GNU/Linux 12.6.0 _Bookworm_ - Official amd64 NETINST with firmware 20240629-10:18]/ bookworm contrib main non-free-firmware
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#deb cdrom:[Debian GNU/Linux 12.6.0 _Bookworm_ - Official amd64 NETINST with firmware 20240629-10:18]/ bookworm contrib main non-free-firmware</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">deb http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free
 </span></span><span class="line"><span class="cl">deb-src http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free
@@ -43,49 +43,49 @@
 </span></span><span class="line"><span class="cl">deb http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib non-free
 </span></span><span class="line"><span class="cl">deb-src http://security.debian.org/debian-security bookworm-security main non-free-firmware contrib non-free
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># bookworm-updates, to get updates before a point release is made;
-</span></span><span class="line"><span class="cl"># see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
+</span></span><span class="line"><span class="cl"><span class="c1"># bookworm-updates, to get updates before a point release is made;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports</span>
 </span></span><span class="line"><span class="cl">deb http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free
 </span></span><span class="line"><span class="cl">deb-src http://deb.debian.org/debian/ bookworm-updates main non-free-firmware contrib non-free
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># This system was installed using small removable media
-</span></span><span class="line"><span class="cl"># (e.g. netinst, live or single CD). The matching &#34;deb cdrom&#34;
-</span></span><span class="line"><span class="cl"># entries were disabled at the end of the installation process.
-</span></span><span class="line"><span class="cl"># For information about how to configure apt package sources,
-</span></span><span class="line"><span class="cl"># see the sources.list(5) manual.
+</span></span><span class="line"><span class="cl"><span class="c1"># This system was installed using small removable media</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># (e.g. netinst, live or single CD). The matching &#34;deb cdrom&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># entries were disabled at the end of the installation process.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># For information about how to configure apt package sources,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># see the sources.list(5) manual.</span>
 </span></span></code></pre></div><p>Then we go ahead and update our package list:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo apt update
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
 </span></span></code></pre></div><p>Now we install the Intel non-free drivers:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo apt install intel-media-va-driver-non-free
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install intel-media-va-driver-non-free
 </span></span></code></pre></div><p>Now we make sure everything is in order with our Intel drivers:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">ls /dev/dri
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls /dev/dri
 </span></span></code></pre></div><p>You should see something like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">by-path/   card0   renderD128
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">by-path/   card0   renderD128
 </span></span></code></pre></div><p>If not try:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">modprobe i915
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">modprobe i915
 </span></span></code></pre></div><p>And checking it out again via:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">ls /dev/dri
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls /dev/dri
 </span></span></code></pre></div><p>Now you should see something like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">by-path/   card0   renderD128
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">by-path/   card0   renderD128
 </span></span></code></pre></div><p>Now we need to make sure our Emby/Plex/Jellyfin docker container has access to the Intel iGPU.</p>
 <p>First we need to set the permissions:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo chmod -R 777 /dev/dri
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod -R <span class="m">777</span> /dev/dri
 </span></span></code></pre></div><p>Now we edit our docker compose file so the <code>/dev/dri:/devdri</code> mapping is correct. My compose file looks like as below:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">services:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">services:
 </span></span><span class="line"><span class="cl">  emby:
 </span></span><span class="line"><span class="cl">    image: emby/embyserver:latest
 </span></span><span class="line"><span class="cl">    container_name: emby
 </span></span><span class="line"><span class="cl">    devices:
 </span></span><span class="line"><span class="cl">      - /dev/dri:/dev/dri  
 </span></span><span class="line"><span class="cl">    environment:
-</span></span><span class="line"><span class="cl">      - UID=1000 # Replace with your user ID
-</span></span><span class="line"><span class="cl">      - GID=1000 # Replace with your group ID
+</span></span><span class="line"><span class="cl">      - <span class="nv">UID</span><span class="o">=</span><span class="m">1000</span> <span class="c1"># Replace with your user ID</span>
+</span></span><span class="line"><span class="cl">      - <span class="nv">GID</span><span class="o">=</span><span class="m">1000</span> <span class="c1"># Replace with your group ID</span>
 </span></span><span class="line"><span class="cl">    volumes:
-</span></span><span class="line"><span class="cl">      - ./config:/config # Replace with the path to your Emby config directory
-</span></span><span class="line"><span class="cl">      - /mnt/merged:/mnt/media # Replace with the path to your media files
+</span></span><span class="line"><span class="cl">      - ./config:/config <span class="c1"># Replace with the path to your Emby config directory</span>
+</span></span><span class="line"><span class="cl">      - /mnt/merged:/mnt/media <span class="c1"># Replace with the path to your media files</span>
 </span></span><span class="line"><span class="cl">    ports:
 </span></span><span class="line"><span class="cl">      - 8097:8096
-</span></span><span class="line"><span class="cl">      - 8920:8920 # Optional for HTTPS
+</span></span><span class="line"><span class="cl">      - 8920:8920 <span class="c1"># Optional for HTTPS</span>
 </span></span><span class="line"><span class="cl">    restart: unless-stopped
 </span></span></code></pre></div><p>Now you should be able to setup your Emby/Plex/Jellyfin so that it can utilize your Intel iGPU to hardware transcode via QuickSync.</p>
 </article>

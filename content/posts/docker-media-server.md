@@ -10,7 +10,7 @@ tags = [
 
 Below is my docker-compose.yml I use for my media server needs. Stack includes Sonarr, Radarr and Sabnzbd for download management. For streaming media it includes Emby. We tried both Plex and Jellyfin before Emby. Emby works best with our Samsung Smart TV so we stayed with Emby.
 
-```html
+```bash
 
 services:
   sabnzbd:

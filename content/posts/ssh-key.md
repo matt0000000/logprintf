@@ -12,13 +12,13 @@ It is widely recommended to disable password authentication unless you have a sp
 
 To disable password authentication, look for the following line in your sshd_config file at `/etc/ssh/sshd_config`
 
-```html
+```bash
 #PasswordAuthentication yes
 ```
 
 replace it with a line that looks like this:
 
-```html
+```bash
 PasswordAuthentication no
 ```
 

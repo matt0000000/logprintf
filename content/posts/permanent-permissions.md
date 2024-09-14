@@ -9,7 +9,7 @@ tags = [
 
 So in my latest [post](https://logprintf.com/setup-plex/emby/jellyfin-hardware-transcoding-via-intel-igpu/) regarding setting up your media server app (Pex/Emby/Jellyfin) so that it uses your iGPU utilizing QuickSync I mentioned that you needed to change permissions on `/dev/dri` so that your docker container can access it. In order to do that you do:
 
-````html
+````bash
 sudo chmod -R 777 /dev/dri
 ````
 
@@ -19,13 +19,13 @@ What you can do to make the permission changes permanent is that, you can create
 
 First we create a udev rule file:
 
-````html
+````bash
 sudo vim /etc/udev/rules.d/99-dri.rules
 ````
 
 Then we add the following content to the file:
 
-````html
+````bash
 SUBSYSTEM=="drm", MODE="0777"
 ````
 
@@ -33,12 +33,12 @@ This rule sets the permissions of any device under the `drm` subsystem (like /de
 
 After saving the file, reload the udev rules:
 
-````html
+````bash
 sudo udevadm control --reload-rules
 ````
 
 Reboot your system and your docker containers can access /dev/dri persistently after each reboot:
 
-````html
+````bash
 sudo reboot
 ````

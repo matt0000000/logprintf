@@ -11,13 +11,13 @@ So if you're like me and use one of your old laptops in your cluster as a headle
 
 
 edit `/etc/systemd/logind` 
-```html
+```bash
 sudo nano /etc/systemd/logind
 ```
 
 uncomment and set the following options: 
 
-```html
+```bash
 HandleLidSwitch=ignore
 HandleLidSwitchExternalPowe r=ignore
 HandleLidSwitchDocked=ignore
@@ -26,6 +26,6 @@ LidSwitchIgnoreInhibited=no
 
 reboot and you are set to go.
 
-```html
+```bash
 sudo reboot
 ```

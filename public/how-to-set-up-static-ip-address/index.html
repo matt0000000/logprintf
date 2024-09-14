@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="logging stuff">
+    
+    <link rel="shortcut icon" href="https://logprintf.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <link rel="canonical" href="https://logprintf.com/how-to-set-up-static-ip-address/" />
+    <title>how to set up static IP address</title>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="b7740ce6-8b64-4398-bcd9-cbb9d3a1a89f"></script>
+</head>
+<body><header id="banner">
+    <h2><a href="https://logprintf.com/">log.Printf</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" title="posts">posts</a>
+            </li><li>
+                <a href="/about/" title="about">about</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>how to set up static IP address</h1>
+        <div>
+                <time>September 14, 2024</time>
+            </div>
+    </header><p>Setting up a static IP address can help ensure that a device keeps the same IP address over time, which is especially useful for servers or other network services.</p>
+<p>Below are the steps to configure a static IP address on a Linux machine using the <code>/etc/network/interfaces</code> file.</p>
+<p>First, open the terminal application on your local machine or log into your remote server using SSH. If you are working on a remote machine, use the following command to establish an SSH connection:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@remote-server-ip
+</span></span></code></pre></div><p>Replace user with your actual username and remote-server-ip with the IP address of your remote machine.</p>
+<p>Before making any changes, it’s a good practice to back up your existing network configuration file. Run the following command to create a backup of the /etc/network/interfaces file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo cp /etc/network/interfaces /root/interfaces.bak
+</span></span></code></pre></div><p>This backup allows you to restore the configuration in case something goes wrong.</p>
+<p>Now, open the <code>/etc/network/interfaces</code> file in your preferred text editor to make changes. I use vim:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vim /etc/network/interfaces
+</span></span></code></pre></div><p>Find the section of the file that corresponds to your Ethernet interface. In this example, we’ll configure the <code>enp2s0</code> interface with the following details:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IP Address: 192.168.1.158
+</span></span><span class="line"><span class="cl">Subnet Mask: 255.255.255.0
+</span></span><span class="line"><span class="cl">Default Gateway: 192.168.1.1
+</span></span><span class="line"><span class="cl">DNS Nameservers: 192.168.1.1, 8.8.8.8, 1.1.1.1
+</span></span></code></pre></div><p>Add or modify the lines in the file as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">auto enp2s0
+</span></span><span class="line"><span class="cl">iface enp2s0 inet static
+</span></span><span class="line"><span class="cl">    address 192.168.1.158
+</span></span><span class="line"><span class="cl">    netmask 255.255.255.0
+</span></span><span class="line"><span class="cl">    gateway 192.168.1.1
+</span></span><span class="line"><span class="cl">    dns-nameservers 192.168.1.1 8.8.8.8 1.1.1.1
+</span></span></code></pre></div><p>Make sure to replace <code>enp2s0</code> with the correct name of your Ethernet interface, which you can find using the <code>ip a</code> command.</p>
+<p>To apply the changes, restart the networking service with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart networking.service
+</span></span></code></pre></div><p>Make sure service restarted without any errors with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl status networking.service
+</span></span></code></pre></div><p>You can verify that the static IP has been successfully configured by running:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip a
+</span></span></code></pre></div><p>Check that the IP address for the <code>enp2s0</code> interface matches the static IP you set (<code>192.168.1.158</code> in this example).</p>
+</article>
+
+        </main><footer id="footer">
+    powered by Hugo
+</footer>
+</body>
+</html>

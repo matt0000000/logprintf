@@ -33,14 +33,14 @@
             </div>
     </header><p>So if you&rsquo;re like me and use one of your old laptops in your cluster as a headless server (mine is on Adguard duty) this could help you. You&rsquo;d most likely want to keep your laptop lid/screen closed. If you do so and you want your Debian install to do nothing when the lid is closed all you have to do is:</p>
 <p>edit <code>/etc/systemd/logind</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo nano /etc/systemd/logind
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/systemd/logind
 </span></span></code></pre></div><p>uncomment and set the following options:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">HandleLidSwitch=ignore
-</span></span><span class="line"><span class="cl">HandleLidSwitchExternalPowe r=ignore
-</span></span><span class="line"><span class="cl">HandleLidSwitchDocked=ignore
-</span></span><span class="line"><span class="cl">LidSwitchIgnoreInhibited=no
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">HandleLidSwitch</span><span class="o">=</span>ignore
+</span></span><span class="line"><span class="cl">HandleLidSwitchExternalPowe <span class="nv">r</span><span class="o">=</span>ignore
+</span></span><span class="line"><span class="cl"><span class="nv">HandleLidSwitchDocked</span><span class="o">=</span>ignore
+</span></span><span class="line"><span class="cl"><span class="nv">LidSwitchIgnoreInhibited</span><span class="o">=</span>no
 </span></span></code></pre></div><p>reboot and you are set to go.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">sudo reboot
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo reboot
 </span></span></code></pre></div></article>
 
         </main><footer id="footer">

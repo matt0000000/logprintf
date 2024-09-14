@@ -33,9 +33,9 @@
             </div>
     </header><p>It is widely recommended to disable password authentication unless you have a specific reason not to. Instead you should use SSH keys.</p>
 <p>To disable password authentication, look for the following line in your sshd_config file at <code>/etc/ssh/sshd_config</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">#PasswordAuthentication yes
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#PasswordAuthentication yes</span>
 </span></span></code></pre></div><p>replace it with a line that looks like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">PasswordAuthentication no
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PasswordAuthentication no
 </span></span></code></pre></div><p>Now check for <code>/etc/ssh/sshd_config.d/50-cloud-init.conf</code></p>
 <p>If the file exists make the same change in that file as well. You may go ahead and delete the file altogether as well but some users report that it gets recreated.</p>
 <p>Once you have saved the file and restarted your SSH server, password authentication should be disabled.</p>

@@ -16,14 +16,14 @@ So I've been having issues with enabling hardware transcode in my Emby Container
 
 First I had to add non-free to the debian sources in order to install Intel non-free drivers.
 
-```html
+````bash
 sudo nano /etc/apt/sources.list
-```
+````
 
 I added `contrib` and `non-free` to the end of the relevant lines so my sources.list file looks like below:
 
 
-```html
+````bash
 #deb cdrom:[Debian GNU/Linux 12.6.0 _Bookworm_ - Official amd64 NETINST with firmware 20240629-10:18]/ bookworm contrib main non-free-firmware
 
 deb http://deb.debian.org/debian/ bookworm main non-free-firmware contrib non-free
@@ -42,47 +42,47 @@ deb-src http://deb.debian.org/debian/ bookworm-updates main non-free-firmware co
 # entries were disabled at the end of the installation process.
 # For information about how to configure apt package sources,
 # see the sources.list(5) manual.
-```
+````
 
 Then we go ahead and update our package list:
 
-```html
+````bash
 sudo apt update
-```
+````
 
 Now we install the Intel non-free drivers:
 
-```html
+````bash
 sudo apt install intel-media-va-driver-non-free
-```
+````
 
 Now we make sure everything is in order with our Intel drivers:
 
-```html
+```bash
 ls /dev/dri
 ```
 
 You should see something like this:
 
-```html
+```bash
 by-path/   card0   renderD128
 ```
 
 If not try:
 
-```html
+```bash
 modprobe i915
 ```
 
 And checking it out again via:
 
-```html
+```bash
 ls /dev/dri
 ```
 
 Now you should see something like this:
 
-```html
+```bash
 by-path/   card0   renderD128
 ```
 
@@ -90,13 +90,13 @@ Now we need to make sure our Emby/Plex/Jellyfin docker container has access to t
 
 First we need to set the permissions:
 
-```html
+```bash
 sudo chmod -R 777 /dev/dri
 ```
 
 Now we edit our docker compose file so the `/dev/dri:/devdri` mapping is correct. My compose file looks like as below:
 
-```html
+```bash
 services:
   emby:
     image: emby/embyserver:latest
