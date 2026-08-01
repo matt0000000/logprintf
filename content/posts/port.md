@@ -1,6 +1,6 @@
 +++
 title = "find what is using a port on linux"
-date = "2026-08-02"
+date = "2026-07-31"
 description = "identify the process listening on a specific network port"
 tags = [
 "linux",
