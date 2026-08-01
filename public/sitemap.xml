@@ -2,25 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://logprintf.com/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/how-old-is-ann/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/tags/indieweb/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/logprintf-is-now-indieweb-compliant/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/posts/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/tags/puzzles/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/tags/riddles/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/tags/selfhosted/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://logprintf.com/tags/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://logprintf.com/tags/debian/</loc>
     <lastmod>2024-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://logprintf.com/tags/freebsd/</loc>
     <lastmod>2024-09-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://logprintf.com/</loc>
-    <lastmod>2024-09-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://logprintf.com/how-to-set-up-static-ip-address/</loc>
     <lastmod>2024-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://logprintf.com/how-to-set-up-static-ip-address-on-freebsd-machine/</loc>
-    <lastmod>2024-09-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://logprintf.com/posts/</loc>
-    <lastmod>2024-09-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://logprintf.com/tags/</loc>
     <lastmod>2024-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://logprintf.com/persistent-permissions-on-/dev/dri/</loc>

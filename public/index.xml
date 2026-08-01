@@ -10,9 +10,23 @@
 		
 		
 		
-			<lastBuildDate>Sat, 14 Sep 2024 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Sat, 01 Aug 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="https://logprintf.com/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>how old is ann?</title>
+				<link>https://logprintf.com/how-old-is-ann/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/how-old-is-ann/</guid>
+				<description>&lt;p&gt;Mary is 24 years old.&lt;/p&gt;&#xA;&lt;p&gt;She is twice as old as Ann was when Mary was as old as Ann is now.&lt;/p&gt;&#xA;&lt;p&gt;How old is Ann?&lt;/p&gt;&#xA;&lt;p&gt;It sounds simple. It probably isn&amp;rsquo;t.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>logprintf is now indieweb compliant</title>
+				<link>https://logprintf.com/logprintf-is-now-indieweb-compliant/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/logprintf-is-now-indieweb-compliant/</guid>
+				<description>&lt;p&gt;I&amp;rsquo;ve updated logprintf.com to support IndieWeb standards.&lt;/p&gt;&#xA;&lt;p&gt;The goal is simple: keep ownership of my content while making the site easier to connect with the wider web.&lt;/p&gt;&#xA;&lt;p&gt;A small technical upgrade, but an important principle: own your content.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>how to set up static IP address</title>
 				<link>https://logprintf.com/how-to-set-up-static-ip-address/</link>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Indieweb on log.Printf</title>
+		<link>https://logprintf.com/tags/indieweb/</link>
+		<description>Recent content in Indieweb on log.Printf</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 01 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://logprintf.com/tags/indieweb/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>logprintf is now indieweb compliant</title>
+				<link>https://logprintf.com/logprintf-is-now-indieweb-compliant/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/logprintf-is-now-indieweb-compliant/</guid>
+				<description>&lt;p&gt;I&amp;rsquo;ve updated logprintf.com to support IndieWeb standards.&lt;/p&gt;&#xA;&lt;p&gt;The goal is simple: keep ownership of my content while making the site easier to connect with the wider web.&lt;/p&gt;&#xA;&lt;p&gt;A small technical upgrade, but an important principle: own your content.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

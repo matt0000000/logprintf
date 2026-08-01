@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Riddles on log.Printf</title>
+		<link>https://logprintf.com/tags/riddles/</link>
+		<description>Recent content in Riddles on log.Printf</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 01 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://logprintf.com/tags/riddles/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>how old is ann?</title>
+				<link>https://logprintf.com/how-old-is-ann/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/how-old-is-ann/</guid>
+				<description>&lt;p&gt;Mary is 24 years old.&lt;/p&gt;&#xA;&lt;p&gt;She is twice as old as Ann was when Mary was as old as Ann is now.&lt;/p&gt;&#xA;&lt;p&gt;How old is Ann?&lt;/p&gt;&#xA;&lt;p&gt;It sounds simple. It probably isn&amp;rsquo;t.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

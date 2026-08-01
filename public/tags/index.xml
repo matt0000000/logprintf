@@ -10,9 +10,37 @@
 		
 		
 		
-			<lastBuildDate>Sat, 14 Sep 2024 00:00:00 +0000</lastBuildDate>
+			<lastBuildDate>Sat, 01 Aug 2026 00:00:00 +0000</lastBuildDate>
 		
 			<atom:link href="https://logprintf.com/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Indieweb</title>
+				<link>https://logprintf.com/tags/indieweb/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/tags/indieweb/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Puzzles</title>
+				<link>https://logprintf.com/tags/puzzles/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/tags/puzzles/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Riddles</title>
+				<link>https://logprintf.com/tags/riddles/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/tags/riddles/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Selfhosted</title>
+				<link>https://logprintf.com/tags/selfhosted/</link>
+				<pubDate>Sat, 01 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://logprintf.com/tags/selfhosted/</guid>
+				<description></description>
+			</item>
 			<item>
 				<title>Debian</title>
 				<link>https://logprintf.com/tags/debian/</link>
