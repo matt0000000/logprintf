@@ -1,0 +1,6 @@
+<li class="h-entry">
+    <a class="u-url" href="{{ .Permalink }}">
+        <span class="p-name">{{ .Title }}</span>
+        <small><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format (i18n "posts.date") }}</time></small>
+    </a>
+</li>
