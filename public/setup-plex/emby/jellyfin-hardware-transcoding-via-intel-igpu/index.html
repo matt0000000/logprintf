@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+    <meta name="generator" content="Hugo 0.134.2">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="logging stuff">
     
     <link rel="shortcut icon" href="https://logprintf.com/favicon.ico">
+    
+    <link rel="webmention" href="https://webmention.io/logprintf.com/webmention">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="me" href="https://github.com/matt0000000">
+
     
     <link rel="stylesheet" href="/css/style.min.css">
 
@@ -25,13 +31,19 @@
     </nav>
 </header>
 <main id="content">
-<article>
+<article class="h-entry">
     <header id="post-header">
-        <h1>setup plex/emby/jellyfin hardware transcoding via intel igpu</h1>
+        <h1 class="p-name">setup plex/emby/jellyfin hardware transcoding via intel igpu</h1>
         <div>
-                <time>September 9, 2024</time>
+                <time class="dt-published" datetime="2024-09-09T00:00:00Z">September 9, 2024</time>
             </div>
-    </header><p>So I&rsquo;ve been having issues with enabling hardware transcode in my Emby Container on my Debian machine with i5-8500. These are the steps I had to take to enable hardware transcoding utilizing QuickSync.</p>
+    </header>
+    <a class="u-url" href="https://logprintf.com/setup-plex/emby/jellyfin-hardware-transcoding-via-intel-igpu/" hidden></a>
+    <div class="p-author h-card" hidden>
+        <a class="p-name u-url" href="https://logprintf.com/">mertalp</a>
+        <a class="u-url" rel="me" href="https://github.com/matt0000000">github.com/matt0000000</a>
+    </div>
+    <div class="e-content"><p>So I&rsquo;ve been having issues with enabling hardware transcode in my Emby Container on my Debian machine with i5-8500. These are the steps I had to take to enable hardware transcoding utilizing QuickSync.</p>
 <p>First I had to add non-free to the debian sources in order to install Intel non-free drivers.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/apt/sources.list
 </span></span></code></pre></div><p>I added <code>contrib</code> and <code>non-free</code> to the end of the relevant lines so my sources.list file looks like below:</p>
@@ -88,6 +100,7 @@
 </span></span><span class="line"><span class="cl">      - 8920:8920 <span class="c1"># Optional for HTTPS</span>
 </span></span><span class="line"><span class="cl">    restart: unless-stopped
 </span></span></code></pre></div><p>Now you should be able to setup your Emby/Plex/Jellyfin so that it can utilize your Intel iGPU to hardware transcode via QuickSync.</p>
+</div>
 </article>
 
         </main><footer id="footer">

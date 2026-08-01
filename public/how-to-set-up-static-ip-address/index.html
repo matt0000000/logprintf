@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+    <meta name="generator" content="Hugo 0.134.2">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="logging stuff">
     
     <link rel="shortcut icon" href="https://logprintf.com/favicon.ico">
+    
+    <link rel="webmention" href="https://webmention.io/logprintf.com/webmention">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="me" href="https://github.com/matt0000000">
+
     
     <link rel="stylesheet" href="/css/style.min.css">
 
@@ -25,13 +31,19 @@
     </nav>
 </header>
 <main id="content">
-<article>
+<article class="h-entry">
     <header id="post-header">
-        <h1>how to set up static IP address</h1>
+        <h1 class="p-name">how to set up static IP address</h1>
         <div>
-                <time>September 14, 2024</time>
+                <time class="dt-published" datetime="2024-09-14T00:00:00Z">September 14, 2024</time>
             </div>
-    </header><p>Setting up a static IP address can help ensure that a device keeps the same IP address over time, which is especially useful for servers or other network services.</p>
+    </header>
+    <a class="u-url" href="https://logprintf.com/how-to-set-up-static-ip-address/" hidden></a>
+    <div class="p-author h-card" hidden>
+        <a class="p-name u-url" href="https://logprintf.com/">mertalp</a>
+        <a class="u-url" rel="me" href="https://github.com/matt0000000">github.com/matt0000000</a>
+    </div>
+    <div class="e-content"><p>Setting up a static IP address can help ensure that a device keeps the same IP address over time, which is especially useful for servers or other network services.</p>
 <p>Below are the steps to configure a static IP address on a Linux machine using the <code>/etc/network/interfaces</code> file.</p>
 <p>First, open the terminal application on your local machine or log into your remote server using SSH. If you are working on a remote machine, use the following command to establish an SSH connection:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@remote-server-ip
@@ -62,6 +74,7 @@
 </span></span></code></pre></div><p>You can verify that the static IP has been successfully configured by running:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip a
 </span></span></code></pre></div><p>Check that the IP address for the <code>enp2s0</code> interface matches the static IP you set (<code>192.168.1.158</code> in this example).</p>
+</div>
 </article>
 
         </main><footer id="footer">

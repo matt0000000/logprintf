@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+    <meta name="generator" content="Hugo 0.134.2">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="logging stuff">
     
     <link rel="shortcut icon" href="https://logprintf.com/favicon.ico">
+    
+    <link rel="webmention" href="https://webmention.io/logprintf.com/webmention">
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="me" href="https://github.com/matt0000000">
+
     
     <link rel="stylesheet" href="/css/style.min.css">
 
@@ -25,13 +31,19 @@
     </nav>
 </header>
 <main id="content">
-<article>
+<article class="h-entry">
     <header id="post-header">
-        <h1>docker media server setup</h1>
+        <h1 class="p-name">docker media server setup</h1>
         <div>
-                <time>September 3, 2024</time>
+                <time class="dt-published" datetime="2024-09-03T00:00:00Z">September 3, 2024</time>
             </div>
-    </header><p>Below is my docker-compose.yml I use for my media server needs. Stack includes Sonarr, Radarr and Sabnzbd for download management. For streaming media it includes Emby. We tried both Plex and Jellyfin before Emby. Emby works best with our Samsung Smart TV so we stayed with Emby.</p>
+    </header>
+    <a class="u-url" href="https://logprintf.com/docker-media-server-setup/" hidden></a>
+    <div class="p-author h-card" hidden>
+        <a class="p-name u-url" href="https://logprintf.com/">mertalp</a>
+        <a class="u-url" rel="me" href="https://github.com/matt0000000">github.com/matt0000000</a>
+    </div>
+    <div class="e-content"><p>Below is my docker-compose.yml I use for my media server needs. Stack includes Sonarr, Radarr and Sabnzbd for download management. For streaming media it includes Emby. We tried both Plex and Jellyfin before Emby. Emby works best with our Samsung Smart TV so we stayed with Emby.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">services:
 </span></span><span class="line"><span class="cl">  sabnzbd:
@@ -96,7 +108,8 @@
 </span></span><span class="line"><span class="cl">networks:
 </span></span><span class="line"><span class="cl">  default:
 </span></span><span class="line"><span class="cl">    driver: bridge
-</span></span></code></pre></div></article>
+</span></span></code></pre></div></div>
+</article>
 
         </main><footer id="footer">
     powered by Hugo
