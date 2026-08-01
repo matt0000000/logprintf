@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{ .Content }}
+<div class="h-card" hidden>
+    <a class="p-name u-url u-uid" href="{{ site.Home.Permalink }}">mertalp</a>
+    <a class="u-url" rel="me" href="https://github.com/matt0000000">github.com/matt0000000</a>
+</div>
+{{- partial "posts.html" . -}}
+{{ end }}
